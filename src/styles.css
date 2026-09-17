@@ -60,24 +60,34 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Global dark slate / gray color remaps to brand dark navy blue */
+  --color-slate-950: #031326;
+  --color-slate-900: #062141;
+  --color-slate-800: #0C2C54;
+  --color-slate-700: #123766;
+  --color-gray-950: #031326;
+  --color-gray-900: #062141;
+  --color-gray-800: #0C2C54;
+  --color-black: #062141;
 }
 
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
+  --foreground: #062141;
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
+  --card-foreground: #062141;
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
+  --popover-foreground: #062141;
   --primary: oklch(0.208 0.042 265.755);
   --primary-foreground: oklch(0.984 0.003 247.858);
   --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
+  --secondary-foreground: #062141;
   --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
+  --muted-foreground: #2B4E7A;
   --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
+  --accent-foreground: #062141;
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
   --border: oklch(0.929 0.013 255.508);
@@ -89,11 +99,11 @@
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
   --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
+  --sidebar-foreground: #062141;
   --sidebar-primary: oklch(0.208 0.042 265.755);
   --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
   --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
+  --sidebar-accent-foreground: #062141;
   --sidebar-border: oklch(0.929 0.013 255.508);
   --sidebar-ring: oklch(0.704 0.04 256.788);
 }
@@ -140,8 +150,54 @@
 
   body {
     background-color: var(--color-background);
-    color: var(--color-foreground);
+    color: #062141;
   }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #062141;
+  }
+}
+
+/* ---------- Global Text Color Overrides (Dark Navy Blue #062141) ---------- */
+.text-slate-950,
+.text-slate-900,
+.text-slate-800,
+.text-gray-950,
+.text-gray-900,
+.text-gray-800,
+.text-zinc-950,
+.text-zinc-900,
+.text-zinc-800,
+.text-neutral-950,
+.text-neutral-900,
+.text-neutral-800,
+.text-black,
+.text-brand-blue-dark {
+  color: #062141 !important;
+}
+
+.text-slate-700,
+.text-slate-600,
+.text-gray-700,
+.text-gray-600,
+.text-zinc-700,
+.text-zinc-600,
+.text-neutral-700,
+.text-neutral-600 {
+  color: #123766 !important;
+}
+
+.text-slate-500,
+.text-gray-500,
+.text-zinc-500,
+.text-neutral-500,
+.text-muted-foreground {
+  color: #2B4E7A !important;
+}
+
+.text-slate-400,
+.text-gray-400 {
+  color: #4A6E9E !important;
 }
 
 /* ---------- VEVRA brand tokens ---------- */
@@ -150,7 +206,7 @@
   --brand-red-dark: oklch(0.46 0.19 27.5);
   --brand-red-soft: oklch(0.96 0.03 27.5);
   --brand-blue: oklch(0.42 0.14 259);
-  --brand-blue-dark: oklch(0.29 0.1 259);
+  --brand-blue-dark: #062141;
   --brand-blue-soft: oklch(0.96 0.02 259);
   --primary: var(--brand-red);
   --primary-foreground: oklch(1 0 0);
@@ -174,6 +230,7 @@
 
 body {
   font-family: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  color: #062141;
 }
 
 @utility lift {

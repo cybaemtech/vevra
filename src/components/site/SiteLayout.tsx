@@ -1,11 +1,9 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState, type ReactNode } from "react";
 
-import vevraLogoAsset from "@/assets/vevra-logo.png.asset.json";
+import vevraLogo from "@/assets/vevra-logo.png";
 import { COMPANY, PRODUCTS, SERVICES } from "@/lib/site-content";
 import { SITE_IMAGES } from "@/lib/site-images";
-
-const vevraLogo = vevraLogoAsset.url;
 
 type NavChild = { to: string; params?: Record<string, string>; label: string; desc?: string };
 type NavItem = { to: string; label: string; children?: NavChild[]; columns?: 1 | 2 };
@@ -16,10 +14,12 @@ const NAV: NavItem[] = [
     label: "Company",
     children: [
       { to: "/about", label: "About VEVRA", desc: "Who we are and how we work" },
+      { to: "/leadership", label: "Leadership", desc: "Visionary leaders and mentors" },
       { to: "/corporate-office", label: "Corporate Office", desc: "Head office and reach" },
       { to: "/warehouses", label: "Warehouses", desc: "Storage and distribution network" },
       { to: "/clients", label: "Clients & Industries", desc: "Sectors we serve" },
       { to: "/testimonials", label: "Customer Success", desc: "Challenge, solution, impact" },
+      { to: "/life-at-vevra", label: "Life at VEVRA", desc: "Celebrations, culture & moments" },
     ],
   },
   {
@@ -41,6 +41,7 @@ const NAV: NavItem[] = [
     ],
   },
   { to: "/business-model", label: "Business Model" },
+  { to: "/e-kart", label: "E-Kart" },
   { to: "/contact", label: "Contact" },
 ];
 
@@ -54,13 +55,13 @@ export function RfqButton({
   label?: string;
 }) {
   const base =
-    "arrow-move inline-flex items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold tracking-wide transition-colors";
+    "arrow-move inline-flex items-center justify-center gap-2 rounded-full px-6 py-2.5 text-sm font-bold tracking-wide transition-all";
   const styles =
     variant === "primary"
-      ? "bg-brand text-white hover:bg-brand-dark"
+      ? "bg-brand text-white shadow-md shadow-brand/20 hover:bg-brand-dark hover:shadow-lg"
       : variant === "ghost"
         ? "border border-white/40 text-white hover:bg-white hover:text-brand-blue-dark"
-        : "border border-brand-blue/30 text-brand-blue-dark hover:border-brand hover:text-brand";
+        : "border-2 border-brand-blue-dark/20 text-brand-blue-dark hover:border-brand hover:text-brand";
   return (
     <Link to="/calculator" className={`${base} ${styles} ${className}`}>
       {label}
@@ -167,23 +168,25 @@ function SiteHeader() {
 
   return (
     <header
-      className={`sticky top-0 z-50 border-b bg-background/95 backdrop-blur transition-all ${
-        scrolled ? "border-border shadow-[0_10px_30px_-22px_rgba(15,23,42,0.7)]" : "border-transparent"
+      className={`sticky top-0 z-50 transition-all ${
+        scrolled
+          ? "border-b border-border bg-background/95 shadow-[0_10px_30px_-22px_rgba(15,23,42,0.7)] backdrop-blur"
+          : "border-b border-transparent bg-transparent"
       }`}
       onMouseLeave={() => setOpenGroup(null)}
     >
-      <div className="mx-auto flex max-w-[1280px] items-center gap-6 px-6 py-3">
-        <Link to="/" className="flex items-center">
+      <div className="w-full flex items-center justify-between gap-6 px-6 sm:px-10 lg:px-14 xl:px-16 2xl:px-20 py-3.5">
+        <Link to="/" className="flex items-center shrink-0">
           <img
             src={vevraLogo}
             alt="Vevra Packaging Pvt. Ltd. logo"
-            className={`w-auto transition-all ${scrolled ? "h-10" : "h-12"}`}
-            width={180}
+            className={`w-auto object-contain transition-all ${scrolled ? "h-10" : "h-11 sm:h-12"}`}
+            width={190}
             height={48}
           />
         </Link>
 
-        <nav className="ml-auto hidden items-center gap-1 xl:flex">
+        <nav className="hidden items-center gap-1.5 lg:flex">
           {NAV.map((item) => {
             const hasChildren = !!item.children?.length;
             const isOpen = openGroup === item.label;
@@ -191,21 +194,21 @@ function SiteHeader() {
               <div key={item.label} className="relative" onMouseEnter={() => setOpenGroup(hasChildren ? item.label : null)}>
                 <Link
                   to={item.to}
-                  activeProps={{ className: "text-brand" }}
-                  className="flex items-center gap-1 rounded-lg px-3 py-2 text-[13px] font-semibold text-brand-blue-dark/85 transition-colors hover:text-brand"
+                  activeProps={{ className: "text-brand font-bold" }}
+                  className="flex items-center gap-1.5 rounded-lg px-3.5 py-2 text-[13.5px] font-semibold text-brand-blue-dark/90 transition-colors hover:text-brand"
                 >
                   {item.label}
                   {hasChildren ? (
-                    <span className={`text-[9px] transition-transform ${isOpen ? "rotate-180" : ""}`}>▼</span>
+                    <span className={`text-[9px] opacity-70 transition-transform ${isOpen ? "rotate-180" : ""}`}>▼</span>
                   ) : null}
                 </Link>
                 {hasChildren && isOpen ? (
                   <div
-                    className={`absolute left-1/2 top-full z-50 -translate-x-1/2 pt-3 ${
+                    className={`absolute left-1/2 top-full z-50 -translate-x-1/2 pt-2 ${
                       item.columns === 2 ? "w-[640px]" : "w-[320px]"
                     }`}
                   >
-                    <div className="overflow-hidden rounded-2xl border border-border bg-background p-2 shadow-[0_30px_60px_-30px_rgba(15,23,42,0.55)]">
+                    <div className="overflow-hidden rounded-2xl border border-border bg-background/98 p-2 shadow-[0_30px_60px_-30px_rgba(15,23,42,0.4)] backdrop-blur-md">
                       <div className={`grid gap-1 ${item.columns === 2 ? "sm:grid-cols-2" : ""}`}>
                         {item.children!.map((child) => (
                           <Link
@@ -234,14 +237,14 @@ function SiteHeader() {
           })}
         </nav>
 
-        <div className="ml-auto flex items-center gap-3 xl:ml-2">
+        <div className="flex items-center gap-3">
           <RfqButton className="hidden sm:inline-flex" />
           <button
             type="button"
             aria-label="Toggle navigation"
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
-            className="rounded-xl border border-brand-blue/25 px-3 py-2 text-brand-blue-dark xl:hidden"
+            className="rounded-xl border border-brand-blue/25 px-3 py-2 text-brand-blue-dark lg:hidden"
           >
             {open ? "✕" : "☰"}
           </button>
@@ -302,11 +305,11 @@ function SiteHeader() {
 
 function SiteFooter() {
   return (
-    <footer className="mt-auto bg-brand-blue-dark text-white">
+    <footer className="mt-auto bg-[#0B1930] text-white">
       <div className="mx-auto grid max-w-[1280px] gap-12 px-6 py-16 md:grid-cols-4">
         <div>
           <div className="inline-flex rounded-xl bg-white p-3">
-            <img src={vevraLogo} alt="Vevra Packaging logo" className="h-10 w-auto" />
+            <img src={vevraLogo} alt="Vevra Packaging logo" className="h-10 w-auto object-contain" />
           </div>
           <p className="mt-5 text-sm font-semibold text-white">End-to-End Packaging &amp; Supply-Chain Solutions</p>
           <p className="mt-1 text-sm text-white/60">{COMPANY.tagline}</p>
@@ -314,7 +317,12 @@ function SiteFooter() {
         <div>
           <h3 className="text-[11px] font-bold uppercase tracking-[0.24em] text-brand-soft/80">Solutions</h3>
           <ul className="mt-4 space-y-2 text-sm text-white/75">
-            {PRODUCTS.slice(0, 5).map((p) => (
+            <li>
+              <Link to="/e-kart" className="font-medium text-brand hover:text-white">
+                VEVRA E-Kart &rarr;
+              </Link>
+            </li>
+            {PRODUCTS.slice(0, 4).map((p) => (
               <li key={p.slug}>
                 <Link to="/products/$slug" params={{ slug: p.slug }} className="hover:text-white">
                   {p.name}
@@ -334,10 +342,12 @@ function SiteFooter() {
           <h3 className="text-[11px] font-bold uppercase tracking-[0.24em] text-brand-soft/80">Company</h3>
           <ul className="mt-4 space-y-2 text-sm text-white/75">
             <li><Link to="/about" className="hover:text-white">About</Link></li>
+            <li><Link to="/leadership" className="hover:text-white">Leadership</Link></li>
             <li><Link to="/business-model" className="hover:text-white">Business Models</Link></li>
             <li><Link to="/clients" className="hover:text-white">Clients</Link></li>
             <li><Link to="/warehouses" className="hover:text-white">Warehouses</Link></li>
             <li><Link to="/testimonials" className="hover:text-white">Customer Success</Link></li>
+            <li><Link to="/life-at-vevra" className="text-brand hover:text-white font-medium">Life at VEVRA &rarr;</Link></li>
             <li><Link to="/corporate-office" className="hover:text-white">Corporate Office</Link></li>
           </ul>
         </div>

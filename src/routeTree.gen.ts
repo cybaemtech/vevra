@@ -16,6 +16,9 @@ import { Route as CalculatorRouteImport } from './routes/calculator'
 import { Route as ClientsRouteImport } from './routes/clients'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CorporateOfficeRouteImport } from './routes/corporate-office'
+import { Route as EKartRouteImport } from './routes/e-kart'
+import { Route as LeadershipRouteImport } from './routes/leadership'
+import { Route as LifeAtVevraRouteImport } from './routes/life-at-vevra'
 import { Route as TestimonialsRouteImport } from './routes/testimonials'
 import { Route as WarehousesRouteImport } from './routes/warehouses'
 import { Route as ProductsIndexRouteImport } from './routes/products.index'
@@ -58,6 +61,21 @@ const CorporateOfficeRoute = CorporateOfficeRouteImport.update({
   path: '/corporate-office',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EKartRoute = EKartRouteImport.update({
+  id: '/e-kart',
+  path: '/e-kart',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LeadershipRoute = LeadershipRouteImport.update({
+  id: '/leadership',
+  path: '/leadership',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LifeAtVevraRoute = LifeAtVevraRouteImport.update({
+  id: '/life-at-vevra',
+  path: '/life-at-vevra',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TestimonialsRoute = TestimonialsRouteImport.update({
   id: '/testimonials',
   path: '/testimonials',
@@ -97,6 +115,9 @@ export interface FileRoutesByFullPath {
   '/clients': typeof ClientsRoute
   '/contact': typeof ContactRoute
   '/corporate-office': typeof CorporateOfficeRoute
+  '/e-kart': typeof EKartRoute
+  '/leadership': typeof LeadershipRoute
+  '/life-at-vevra': typeof LifeAtVevraRoute
   '/testimonials': typeof TestimonialsRoute
   '/warehouses': typeof WarehousesRoute
   '/products/$slug': typeof ProductsSlugRoute
@@ -112,6 +133,9 @@ export interface FileRoutesByTo {
   '/clients': typeof ClientsRoute
   '/contact': typeof ContactRoute
   '/corporate-office': typeof CorporateOfficeRoute
+  '/e-kart': typeof EKartRoute
+  '/leadership': typeof LeadershipRoute
+  '/life-at-vevra': typeof LifeAtVevraRoute
   '/testimonials': typeof TestimonialsRoute
   '/warehouses': typeof WarehousesRoute
   '/products/$slug': typeof ProductsSlugRoute
@@ -128,6 +152,9 @@ export interface FileRoutesById {
   '/clients': typeof ClientsRoute
   '/contact': typeof ContactRoute
   '/corporate-office': typeof CorporateOfficeRoute
+  '/e-kart': typeof EKartRoute
+  '/leadership': typeof LeadershipRoute
+  '/life-at-vevra': typeof LifeAtVevraRoute
   '/testimonials': typeof TestimonialsRoute
   '/warehouses': typeof WarehousesRoute
   '/products/$slug': typeof ProductsSlugRoute
@@ -145,6 +172,9 @@ export interface FileRouteTypes {
     | '/clients'
     | '/contact'
     | '/corporate-office'
+    | '/e-kart'
+    | '/leadership'
+    | '/life-at-vevra'
     | '/testimonials'
     | '/warehouses'
     | '/products/$slug'
@@ -160,6 +190,9 @@ export interface FileRouteTypes {
     | '/clients'
     | '/contact'
     | '/corporate-office'
+    | '/e-kart'
+    | '/leadership'
+    | '/life-at-vevra'
     | '/testimonials'
     | '/warehouses'
     | '/products/$slug'
@@ -175,6 +208,9 @@ export interface FileRouteTypes {
     | '/clients'
     | '/contact'
     | '/corporate-office'
+    | '/e-kart'
+    | '/leadership'
+    | '/life-at-vevra'
     | '/testimonials'
     | '/warehouses'
     | '/products/$slug'
@@ -191,6 +227,9 @@ export interface RootRouteChildren {
   ClientsRoute: typeof ClientsRoute
   ContactRoute: typeof ContactRoute
   CorporateOfficeRoute: typeof CorporateOfficeRoute
+  EKartRoute: typeof EKartRoute
+  LeadershipRoute: typeof LeadershipRoute
+  LifeAtVevraRoute: typeof LifeAtVevraRoute
   TestimonialsRoute: typeof TestimonialsRoute
   WarehousesRoute: typeof WarehousesRoute
   ProductsSlugRoute: typeof ProductsSlugRoute
@@ -250,6 +289,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CorporateOfficeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/e-kart': {
+      id: '/e-kart'
+      path: '/e-kart'
+      fullPath: '/e-kart'
+      preLoaderRoute: typeof EKartRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/leadership': {
+      id: '/leadership'
+      path: '/leadership'
+      fullPath: '/leadership'
+      preLoaderRoute: typeof LeadershipRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/life-at-vevra': {
+      id: '/life-at-vevra'
+      path: '/life-at-vevra'
+      fullPath: '/life-at-vevra'
+      preLoaderRoute: typeof LifeAtVevraRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/testimonials': {
       id: '/testimonials'
       path: '/testimonials'
@@ -303,6 +363,9 @@ const rootRouteChildren: RootRouteChildren = {
   ClientsRoute: ClientsRoute,
   ContactRoute: ContactRoute,
   CorporateOfficeRoute: CorporateOfficeRoute,
+  EKartRoute: EKartRoute,
+  LeadershipRoute: LeadershipRoute,
+  LifeAtVevraRoute: LifeAtVevraRoute,
   TestimonialsRoute: TestimonialsRoute,
   WarehousesRoute: WarehousesRoute,
   ProductsSlugRoute: ProductsSlugRoute,
