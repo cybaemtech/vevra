@@ -175,14 +175,14 @@ function SiteHeader() {
       }`}
       onMouseLeave={() => setOpenGroup(null)}
     >
-      <div className="w-full flex items-center justify-between gap-6 px-6 sm:px-10 lg:px-14 xl:px-16 2xl:px-20 py-3.5">
+      <div className="w-full flex items-center justify-between gap-6 px-6 sm:px-10 lg:px-14 xl:px-16 2xl:px-20 py-2 sm:py-2.5">
         <Link to="/" className="flex items-center shrink-0">
           <img
             src={vevraLogo}
             alt="Vevra Packaging Pvt. Ltd. logo"
-            className={`w-auto object-contain transition-all ${scrolled ? "h-10" : "h-11 sm:h-12"}`}
-            width={190}
-            height={48}
+            className={`w-auto object-contain transition-all duration-300 ${scrolled ? "h-11 sm:h-13 lg:h-14" : "h-14 sm:h-16 lg:h-20"}`}
+            width={240}
+            height={70}
           />
         </Link>
 
@@ -308,9 +308,9 @@ function SiteFooter() {
     <footer className="mt-auto bg-[#0B1930] text-white">
       <div className="mx-auto grid max-w-[1280px] gap-12 px-6 py-16 md:grid-cols-4">
         <div>
-          <div className="inline-flex rounded-xl bg-white p-3">
-            <img src={vevraLogo} alt="Vevra Packaging logo" className="h-10 w-auto object-contain" />
-          </div>
+          <Link to="/" className="inline-block transition-transform duration-300 hover:scale-105">
+            <img src={vevraLogo} alt="Vevra Packaging logo" className="h-16 sm:h-20 md:h-24 w-auto object-contain" />
+          </Link>
           <p className="mt-5 text-sm font-semibold text-white">End-to-End Packaging &amp; Supply-Chain Solutions</p>
           <p className="mt-1 text-sm text-white/60">{COMPANY.tagline}</p>
         </div>
