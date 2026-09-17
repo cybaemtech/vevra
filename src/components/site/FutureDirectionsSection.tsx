@@ -43,7 +43,7 @@ const STRATEGY_PILLARS = [
 
 export function FutureDirectionsSection() {
   return (
-    <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24 text-slate-900 border-t border-slate-100" aria-labelledby="future-title">
+    <section className="relative overflow-hidden bg-white pt-16 pb-8 sm:pt-20 sm:pb-10 lg:pt-24 lg:pb-12 text-slate-900 border-t border-slate-100" aria-labelledby="future-title">
       {/* Background Radiance */}
       <div className="pointer-events-none absolute right-0 top-0 h-[600px] w-[600px] rounded-full bg-rose-100/40 blur-3xl" />
       <div className="pointer-events-none absolute left-0 bottom-0 h-80 w-80 rounded-full bg-rose-50/60 blur-2xl" />
