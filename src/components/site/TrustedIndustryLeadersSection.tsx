@@ -44,7 +44,6 @@ import varrocImg from "@/assets/customers/Varroc.png";
 import precisionImg from "@/assets/customers/precision.png";
 import newHollandImg from "@/assets/customers/newholland.png";
 import jcbImg from "@/assets/customers/JCB.png";
-import vevraLogo from "@/assets/vevra-logo.png";
 
 export interface CustomerLogoItem {
   id: string;
@@ -99,7 +98,6 @@ export const ALL_CUSTOMER_LOGOS: CustomerLogoItem[] = [
   { id: "precision", name: "Precision", image: precisionImg },
   { id: "newholland", name: "New Holland", image: newHollandImg },
   { id: "jcb", name: "JCB", image: jcbImg },
-  { id: "vevra", name: "VEVRA Packaging", image: vevraLogo },
 ];
 
 export function TrustedIndustryLeadersSection({
@@ -170,14 +168,11 @@ export function TrustedIndustryLeadersSection({
         <div className="relative mt-12 sm:mt-14">
           {/* 42 Client Logo Tiles Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2.5 sm:gap-3.5 p-1">
-            {ALL_CUSTOMER_LOGOS.map((customer, idx) => {
-              const is41st = idx === 40; // 41st item (JCB)
+            {ALL_CUSTOMER_LOGOS.map((customer) => {
               return (
                 <div
                   key={customer.id}
-                  className={`group relative flex h-20 sm:h-24 items-center justify-center rounded-2xl border border-slate-200/80 bg-white px-4 py-3 shadow-[0_2px_8px_-2px_rgba(15,23,42,0.06)] transition-all duration-300 hover:-translate-y-1 hover:border-[#D9232A]/40 hover:shadow-lg hover:shadow-slate-200/80 ${
-                    is41st ? "sm:col-start-2 md:col-start-auto lg:col-start-4" : ""
-                  }`}
+                  className="group relative flex h-20 sm:h-24 items-center justify-center rounded-2xl border border-slate-200/80 bg-white px-4 py-3 shadow-[0_2px_8px_-2px_rgba(15,23,42,0.06)] transition-all duration-300 hover:-translate-y-1 hover:border-[#D9232A]/40 hover:shadow-lg hover:shadow-slate-200/80"
                 >
                   <img
                     src={customer.image}
